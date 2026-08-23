@@ -1,0 +1,82 @@
+{
+  "extension": "@mgreten/feature-idea-gate",
+  "version": "2026.08.23.1",
+  "reviewedAt": "2026-08-23T16:00:00Z",
+  "dimensions": [
+    {
+      "id": "credentials-secrets",
+      "verdict": "na",
+      "note": "No credentials are accepted, logged, or persisted."
+    },
+    {
+      "id": "logging-quality",
+      "verdict": "pass",
+      "note": "Both methods emit structured entry and completion logs without payloads."
+    },
+    {
+      "id": "error-handling",
+      "verdict": "pass",
+      "note": "Strict input, evidence, prompt, output, invocation, and claim checks all precede persistence."
+    },
+    {
+      "id": "testing-completeness",
+      "verdict": "pass",
+      "note": "Tests cover configured policy, provenance, freshness, labels, blockers, missing data, strictness, prompt/output tampering, failed invocation, determinism, and no workspace side effect."
+    },
+    {
+      "id": "idempotency-resilience",
+      "verdict": "pass",
+      "note": "Methods are deterministic validation and persistence transformations with stable spec-prefixed instance names."
+    },
+    {
+      "id": "api-contracts",
+      "verdict": "na",
+      "note": "The extension performs no HTTP or provider invocation."
+    },
+    {
+      "id": "resource-management",
+      "verdict": "na",
+      "note": "No network connection, file handle, workspace, or temporary resource is created."
+    },
+    {
+      "id": "published-surface-hygiene",
+      "verdict": "pass",
+      "note": "Published docs and fixtures contain only synthetic example.test identifiers."
+    },
+    {
+      "id": "schema-strictness",
+      "verdict": "pass",
+      "note": "All public, nested, invocation, and persisted Zod object contracts are strict."
+    },
+    {
+      "id": "lifetime-gc",
+      "verdict": "pass",
+      "note": "Both resource specs declare infinite lifetime and bounded GC retention."
+    },
+    {
+      "id": "crud-completeness",
+      "verdict": "na",
+      "note": "This is a read-only assessment pipeline, not an external resource lifecycle."
+    },
+    {
+      "id": "preflight-checks",
+      "verdict": "na",
+      "note": "No external mutation is exposed."
+    },
+    {
+      "id": "instance-names",
+      "verdict": "pass",
+      "note": "request and validatedGate use distinct spec-prefixed instance names; each spec has one conforming writer."
+    },
+    {
+      "id": "data-access",
+      "verdict": "na",
+      "note": "No stored resource is read."
+    },
+    {
+      "id": "version-upgrades",
+      "verdict": "na",
+      "note": "Initial unpublished standalone version."
+    }
+  ]
+}
