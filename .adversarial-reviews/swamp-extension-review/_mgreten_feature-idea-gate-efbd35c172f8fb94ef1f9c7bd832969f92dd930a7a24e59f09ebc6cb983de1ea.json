@@ -1,0 +1,82 @@
+{
+  "extension": "@mgreten/feature-idea-gate",
+  "version": "2026.08.23.1",
+  "reviewedAt": "2026-08-24T03:28:24Z",
+  "dimensions": [
+    {
+      "id": "credentials-secrets",
+      "verdict": "na",
+      "note": "No credential or secret input exists; invocation telemetry is projected to non-secret binding fields before persistence."
+    },
+    {
+      "id": "logging-quality",
+      "verdict": "pass",
+      "note": "prepare and validate each emit structured entry and completion logs containing only gateId, never prompts, outputs, telemetry, or credentials."
+    },
+    {
+      "id": "error-handling",
+      "verdict": "pass",
+      "note": "All request, output, invocation, and claim parsing plus prompt, invocation ID, model, cwd, provider, success, readonly, and sandbox checks complete before writeResource; the review fixed the missing invocationId-to-gateId binding."
+    },
+    {
+      "id": "testing-completeness",
+      "verdict": "pass",
+      "note": "Six model tests cover success, evidence failures, prompt tampering, complete current cli-agent shapes, telemetry projection, absence of outputHash, and drift in invocation ID, prompt hash, model, cwd, provider, success, operation, readonly profile, and sandbox policy; seven active-workflow contract tests pass."
+    },
+    {
+      "id": "idempotency-resilience",
+      "verdict": "pass",
+      "note": "Both methods are deterministic validation/persistence transformations with stable gate-derived instance names and no external side effects."
+    },
+    {
+      "id": "api-contracts",
+      "verdict": "na",
+      "note": "The extension performs no HTTP request or provider invocation; current provider resource compatibility is validated as local input data."
+    },
+    {
+      "id": "resource-management",
+      "verdict": "na",
+      "note": "No network connection, file handle, workspace, subprocess, or temporary resource is created."
+    },
+    {
+      "id": "published-surface-hygiene",
+      "verdict": "pass",
+      "note": "README, contracts, and fixtures use synthetic identifiers, /tmp paths, example.test URLs, and no real infrastructure details."
+    },
+    {
+      "id": "schema-strictness",
+      "verdict": "pass",
+      "note": "Persisted request/audit/gate schemas and public method envelopes are strict. Only the two current cli-agent ingress compatibility schemas permit extra telemetry, which is immediately projected field-by-field through strict audit schemas; nested sandbox remains strict."
+    },
+    {
+      "id": "lifetime-gc",
+      "verdict": "pass",
+      "note": "request and validatedGate both declare infinite lifetime and garbageCollection 10, appropriate for durable audit evidence with bounded retained versions."
+    },
+    {
+      "id": "crud-completeness",
+      "verdict": "na",
+      "note": "This model prepares and validates immutable advisory records; it does not manage an external resource lifecycle."
+    },
+    {
+      "id": "preflight-checks",
+      "verdict": "na",
+      "note": "No mutating external operation is exposed."
+    },
+    {
+      "id": "instance-names",
+      "verdict": "pass",
+      "note": "Mechanical review found one writer per spec: prepare writes complete preparedRequestSchema data to request-<gateId>, validate writes complete validatedGateSchema data to gate-<gateId>; spec prefixes prevent cross-spec collision."
+    },
+    {
+      "id": "data-access",
+      "verdict": "na",
+      "note": "No stored state is read; callers explicitly supply the prepared request and provider evidence."
+    },
+    {
+      "id": "version-upgrades",
+      "verdict": "na",
+      "note": "Registry dry-run reports no previously published version; this remains the initial unpublished standalone version."
+    }
+  ]
+}
